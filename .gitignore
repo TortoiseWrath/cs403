@@ -1,3 +1,4 @@
 .scam_history
 *.lib
 submission/
+*.args
