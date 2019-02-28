@@ -19,7 +19,7 @@
 )
 
 (define (hex x) 
-	(define hexes (array "0" "1" "2" "3" "4" "5" "6" "7" "8" "9" "A" "B" "C" "D" "E" "F"))
+	(define hexes "0123456789ABCDEF")
 	(string+
 		(getElement hexes (/ x 16))
 		(getElement hexes (% x 16))
