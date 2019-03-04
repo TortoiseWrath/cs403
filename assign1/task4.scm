@@ -59,5 +59,6 @@
     (define l (readInt))
 	(define r (readInt))
 	(define n (readInt))
+	(println "((crazyTriangle " l " " r ") " n ")")
 	((crazyTriangle l r) n)
 )
