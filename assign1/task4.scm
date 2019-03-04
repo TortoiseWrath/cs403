@@ -56,8 +56,8 @@
 
 (define (main)
 	(setPort (open (getElement ScamArgs 1) 'read))
-    (define l (readInt))
-	(define r (readInt))
+    (define l (readExpr))
+	(define r (readExpr))
 	(define n (readInt))
 	(println "((crazyTriangle " l " " r ") " n ")")
 	((crazyTriangle l r) n)
