@@ -1,5 +1,20 @@
 (define (efci n)
-	(real 7)
+	(define (efci-iter store n)
+		(if (== 0 n)
+			store
+			(efci-iter 
+				(/ 1.0
+					(+ 1 (/ 1.0
+						(+ n (/ 1.0
+							(+ 1 store)
+						))
+					))
+				)
+				(- n 2)
+			)
+		)
+	)
+	(+ 2 (efci-iter 0 (* n 2)))
 )
 
 (define (main)
