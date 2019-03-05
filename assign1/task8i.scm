@@ -1,8 +1,8 @@
-(define (efci n)
-	(define (efci-iter store state n)
+(define (ecfi n)
+	(define (ecfi-iter store state n)
 		(if (== 0 n)
 			(+ 2.0 store)
-			(efci-iter
+			(ecfi-iter
 				(/
 					1.0
 					(+
@@ -24,11 +24,11 @@
 			)
 		)
 	)
-	(efci-iter 0.0 3 (* n 2))
+	(ecfi-iter 0.0 3 (* n 2))
 )
 
 (define (main)
 	(setPort (open (getElement ScamArgs 1) 'read))
     (define n (readInt))
-	(println "(efci " n ") is " (fmt "%.25f" (efci n)))
+	(println "(ecfi " n ") is " (fmt "%.25f" (ecfi n)))
 )

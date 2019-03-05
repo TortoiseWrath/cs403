@@ -1,4 +1,4 @@
-(define (efcr n)
+(define (ecfr n)
 	(define (r i)
 		(if (== n 0)
 		0
@@ -22,5 +22,5 @@
 (define (main)
 	(setPort (open (getElement ScamArgs 1) 'read))
     (define n (readInt))
-	(println "(efcr " n ") is " (fmt "%.25f" (efcr n)))
+	(println "(ecfr " n ") is " (fmt "%.25f" (ecfr n)))
 )
