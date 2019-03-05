@@ -4,9 +4,9 @@
 
 (define (halve x)
 	(define (maxPower subx start) 
-		(if (> (double (double start)) subx)
+		(if (> (+ start start start start) subx)
 			start
-			(maxPower subx (double start))
+			(maxPower subx (+ start start))
 		)
 	)
 
@@ -14,7 +14,7 @@
 		(define mp (maxPower subx 1))
 		(if (<= subx 1) 
 			sum
-			(halve-iter (+ mp sum) (- subx (double mp)) 1)
+			(halve-iter (+ mp sum) (- subx (+ mp mp)) 1)
 		)
 	)
 	
@@ -22,15 +22,33 @@
 )
 
 (define (div2? x)
-	(== x (double (halve x)))
+	(define (maxPower subx start) 
+		(if (> (+ start start start start) subx)
+			start
+			(maxPower subx (+ start start))
+		)
+	)
+
+	(define (div2-iter subx power)
+		(define mp (maxPower subx 1))
+		(if (<= subx 1) 
+			(if (== subx 1)
+				#f
+				#t
+			)
+			(div2-iter (- subx (+ mp mp)) 1)
+		)
+	)
+	
+	(div2-iter x 1)
 )
 
 (define (ethiop a b)
 	(define (ethiop-iter sum a b)
 		(cond
-			((div2? b) (ethiop-iter sum (double a) (halve b)))
+			((div2? b) (ethiop-iter sum (+ a a) (halve b)))
 			((== b 1) (+ sum a))
-			(else (ethiop-iter (+ sum a) (double a) (halve b)))
+			(else (ethiop-iter (+ sum a) (+ a a) (halve b)))
 		)
 	)
 	(ethiop-iter 0 a b)
