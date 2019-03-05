@@ -10,15 +10,15 @@
 		)
 	)
 
-	(define (partialHalve sum subx power)
+	(define (halve-iter sum subx power)
 		(define mp (maxPower subx 1))
 		(if (<= subx 1) 
 			sum
-			(partialHalve (+ mp sum) (- subx (double mp)) 1)
+			(halve-iter (+ mp sum) (- subx (double mp)) 1)
 		)
 	)
 	
-	(partialHalve 0 x 1)
+	(halve-iter 0 x 1)
 )
 
 (define (div2? x)
