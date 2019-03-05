@@ -1,20 +1,30 @@
 (define (efci n)
-	(define (efci-iter store n)
+	(define (efci-iter store state n)
 		(if (== 0 n)
 			(+ 2.0 store)
-			(efci-iter 
-				(/ 1.0
-					(+ 1 (/ 1.0
-						(+ n (/ 1.0
-							(+ 1 store)
-						))
-					))
+			(efci-iter
+				(/
+					1.0
+					(+
+						(if (== state 2)
+							n
+							1
+						)
+						store
+					)				
 				)
-				(- n 2)
+				(if (== state 1)
+					3
+					(- state 1)
+				)
+				(if (== state 1)
+					(- n 2)
+					n
+				)
 			)
 		)
 	)
-	(efci-iter 0 (* n 2))
+	(efci-iter 0.0 3 (* n 2))
 )
 
 (define (main)
