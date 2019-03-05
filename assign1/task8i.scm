@@ -1,7 +1,7 @@
 (define (efci n)
 	(define (efci-iter store n)
 		(if (== 0 n)
-			store
+			(+ 2.0 store)
 			(efci-iter 
 				(/ 1.0
 					(+ 1 (/ 1.0
@@ -14,7 +14,7 @@
 			)
 		)
 	)
-	(real (+ 2 (efci-iter 0 (* n 2))))
+	(efci-iter 0 (* n 2))
 )
 
 (define (main)
