@@ -26,16 +26,14 @@
 )
 
 (define (ethiop a b)
-	(+
-		(if (div2? b)
-			0
-			a
-		)
-		(if (== b 1)
-			0
-			(ethiop (double a) (halve b))
+	(define (ethiop-iter sum a b)
+		(cond
+			((div2? b) (ethiop-iter sum (double a) (halve b)))
+			((== b 1) (+ sum a))
+			(else (ethiop-iter (+ sum a) (double a) (halve b)))
 		)
 	)
+	(ethiop-iter 0 a b)
 )
 
 (define (main)
