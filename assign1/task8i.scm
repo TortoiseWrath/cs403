@@ -14,7 +14,7 @@
 			)
 		)
 	)
-	(+ 2 (efci-iter 0 (* n 2)))
+	(real (+ 2 (efci-iter 0 (* n 2))))
 )
 
 (define (main)
