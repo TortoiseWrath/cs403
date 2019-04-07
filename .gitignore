@@ -3,3 +3,6 @@
 submission/
 *.args
 tests/
+run
+results
+*.ints

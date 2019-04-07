@@ -1,11 +1,11 @@
 (define (range start end step)
 	(define (rangeIter store start end step)
-		(if (< end start)
+		(if (>= start end)
 			store
-			(rangeIter (cons end store) start (- end step) step)
+			(rangeIter (cons start store) (+ start step) end step)
 		)
 	)
-	(rangeIter (list) start (- end step) step)
+	(reverse (rangeIter (list) start end step))
 )
 
 (define (for-loop l p)

@@ -1,0 +1,52 @@
+(define (accumulate op initial sequence)
+	(if (nil? sequence)
+		initial
+		(op
+			(car sequence)
+			(accumulate op initial (cdr sequence))	
+		)	
+	)
+)
+
+(define (accumulate-n op init seqs)
+	(if (nil? (car seqs))
+		'()
+		(cons 
+			(accumulate op init (map car seqs))
+			(accumulate-n op init (map cdr seqs))
+		)
+	)
+)
+
+(define (dot-product v w)
+	(accumulate + 0 (map * v w))
+)
+
+(define (matrix-*-vector m v)
+	(let ((rows (transpose m)))
+		(map (lambda (row) (dot-product row v)) rows)
+	)
+)
+
+(define (transpose m)
+	(accumulate-n cons nil m)
+)
+
+(define (matrix-*-matrix m n)
+	(transpose (let ((rows (transpose m)))
+		(map (lambda (row)
+			(map (lambda (col)
+				(dot-product row col)
+			) n)
+		) rows)
+	))
+)
+
+(define (main)
+	(setPort (open (getElement ScamArgs 1) 'read))
+	(define env this)
+    (define (iter expr)
+         (if (not (eof?)) (begin (eval expr env) (iter (readExpr))))
+         )
+    (iter (readExpr))
+)
