@@ -1,8 +1,3 @@
-; Someone on the forum reported the built-in append and reverse use set, so I am redefining them here
-(define (append a b) (if (nil? a) b (cons (car a) (append (cdr a) b))))
-(define (reverse a) (if (nil? a) () (append (reverse (cdr a)) (list (car a)))))
-
-
 ; Stack is a list; first element is the size
 (define (Stack) (list 0))
 ; Queue is a size and two stacks
