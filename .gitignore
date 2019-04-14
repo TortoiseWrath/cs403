@@ -6,3 +6,6 @@ tests/
 run
 results
 *.ints
+queue.scm
+gates.scm
+.buffer
