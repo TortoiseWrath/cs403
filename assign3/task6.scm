@@ -25,7 +25,7 @@
 	(define (iter st1 st2 i state)
 		(if (or (= i n) (not state))
 			state
-			(iter (stream-cdr st1) (stream-cdr st2) (+ i 1) (< (abs (- (stream-car st1) (stream-car st2))) n))
+			(iter (stream-cdr st1) (stream-cdr st2) (+ i 1) (< (abs (- (stream-car st1) (stream-car st2))) t))
 		)
 	)
 	(iter s1 s2 0 #t)

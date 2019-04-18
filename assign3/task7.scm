@@ -56,7 +56,7 @@
 
 (define (super-mystery x)
 	(define (superaccel s)
-		(cons-stream (stream-car s) (superaccel (euler-transform (stream-cdr s))))
+		(cons-stream (stream-car s) (superaccel (euler-transform s)))
 	)
 	(superaccel (ps-mystery x))
 )
