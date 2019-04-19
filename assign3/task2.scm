@@ -22,7 +22,7 @@
 		((list? obj)
 			; (println "list")
 			(if (eq? (car obj) 'quote)
-				obj
+				(cons (replace (car obj) replacements) (cdr obj))
 				(cons (replace (car obj) replacements) (replace (cdr obj) replacements))
 			)
 		)
