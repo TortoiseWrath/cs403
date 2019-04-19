@@ -40,9 +40,10 @@
 )
 
 (define (xnor-gate a b z)
-	(let ((x (make-wire)))
-		(xor-gate a b x)
-		(inverter x z)
+	(let ((x (make-wire)) (y (make-wire)))
+		(or-gate a b x)
+		(nand-gate a b y)
+		(nand-gate x y z)
 	)
 )
 
